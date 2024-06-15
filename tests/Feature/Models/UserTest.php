@@ -1,0 +1,17 @@
+<?php
+
+use App\Models\Course;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
+it('has courses', function () {
+   $user = User::factory()
+       ->has(Course::factory()->count(2))
+       ->create();
+
+   expect($user->courses)
+       ->toHaveCount(2)
+       ->each->toBeInstanceOf(Course::class);
+});

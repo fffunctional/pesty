@@ -10,14 +10,14 @@ uses(RefreshDatabase::class);
 it('does not find unreleased course', function() {
    $course = Course::factory()->create();
 
-   get(route('course-details', $course))
+   get(route('pages.course-details', $course))
        ->assertNotFound();
 });
 
 it('shows course details', function () {
     $course = Course::factory()->released()->create();
 
-    get(route('course-details', $course))
+    get(route('pages.course-details', $course))
         ->assertSeeText([
             $course->title,
             $course->description,
@@ -33,7 +33,7 @@ it('shows course video count', function () {
         ->has(Video::factory()->count(3))
         ->create();
 
-    get(route('course-details', $course))
+    get(route('pages.course-details', $course))
         ->assertOk()
         ->assertSeeText('3 videos');
 });
