@@ -1,8 +1,8 @@
 # LaravelCasts - Todos
 
 ## Guest can 
-* see courses overview
-* see course details
+* see courses overview √
+* see course details √
 * purchase a courses
 
 ## Member can
