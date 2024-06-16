@@ -6,7 +6,7 @@
 * purchase a courses
 
 ## Member can
-* log in
+* log in √
 * see purchased courses √
 * watch purchased course
 

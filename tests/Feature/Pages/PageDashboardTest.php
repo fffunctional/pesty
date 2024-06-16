@@ -68,3 +68,26 @@ it ('includes link to product videos', function () {
         ->assertSeeText('Watch Videos')
         ->assertSee(route('pages.course-videos', Course::first()));
 });
+
+it('includes logout if logged in', function () {
+    loginAsUser();
+    get(route('pages.home'))
+        ->assertOk()
+        ->assertSeeText('Log Out')
+        ->assertSee(route('logout'));
+});
+
+it('does not find JetStream registration page', function () {
+    get('register')
+        ->assertNotFound();
+});
+
+it('includes logout', function () {
+    loginAsUser();
+    get(route('pages.dashboard'))
+        ->assertOk()
+        ->assertSeeText('Log Out')
+        ->assertSee(route('logout'));
+});
+
+
