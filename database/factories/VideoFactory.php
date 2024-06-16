@@ -13,6 +13,7 @@ class VideoFactory extends Factory
     public function definition(): array
     {
         return [
+            'slug' => $this->faker->sentence,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
