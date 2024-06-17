@@ -1,3 +1,5 @@
 <div>
-    <h1>{{ $video->title }}</h1>
+    <iframe src="https://player.vimeo.com/video/{{$video->vimeo_id}}"></iframe>
+    <h3>{{ $video->title }} {{ $video->duration }}min</h3>
+    <p>{{ $video->description }}</p>
 </div>
