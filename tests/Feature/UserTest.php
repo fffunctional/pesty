@@ -6,20 +6,20 @@ use App\Models\Video;
 
 it('has courses', function () {
    $user = User::factory()
-       ->has(Course::factory()->count(2))
+       ->has(Course::factory()->count(2), 'purchasedCourses')
        ->create();
 
-   expect($user->courses)
+   expect($user->purchasedCourses)
        ->toHaveCount(2)
        ->each->toBeInstanceOf(Course::class);
 });
 
 it('has videos', function () {
     $user = User::factory()
-        ->has(Video::factory()->count(2), 'videos')
+        ->has(Video::factory()->count(2), 'watchedVideos')
         ->create();
 
-    expect($user->videos)
+    expect($user->watchedVideos)
         ->toHaveCount(2)
         ->each->toBeInstanceOf(Video::class);
 });
