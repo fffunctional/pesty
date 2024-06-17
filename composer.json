@@ -13,6 +13,7 @@
         "livewire/livewire": "^3.0"
     },
     "require-dev": {
+        "christophrumpel/missing-livewire-assertions": "^2.8",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.16",
         "laravel/sail": "^1.26",
