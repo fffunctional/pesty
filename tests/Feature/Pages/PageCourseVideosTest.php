@@ -4,6 +4,7 @@ use App\Livewire\VideoPlayer;
 use App\Models\Course;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+
 use function Pest\Laravel\get;
 
 it('cannot be accessed by a guest', function () {
@@ -36,7 +37,7 @@ it('shows first course video by default', function () {
         ->assertSeeText('My Video');
 });
 
-it('shows provided course video', function  () {
+it('shows provided course video', function () {
     $course = Course::factory()
         ->has(
             Video::factory()
@@ -44,15 +45,15 @@ it('shows provided course video', function  () {
                     new Sequence(
                         ['title' => 'First video'],
                         ['title' => 'Second video']
-                     ))
+                    ))
                 ->count(2)
-            )
-            ->create();
+        )
+        ->create();
 
     loginAsUser();
     get(route('pages.course-videos', [
         'course' => $course,
-        'video'  => $course->videos()->orderByDesc('id')->first()
+        'video' => $course->videos()->orderByDesc('id')->first(),
     ]))
         ->assertOk()
         ->assertSeeText('Second video');

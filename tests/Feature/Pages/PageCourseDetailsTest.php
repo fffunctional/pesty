@@ -2,13 +2,14 @@
 
 use App\Models\Course;
 use App\Models\Video;
+
 use function Pest\Laravel\get;
 
-it('does not find unreleased course', function() {
-   $course = Course::factory()->create();
+it('does not find unreleased course', function () {
+    $course = Course::factory()->create();
 
-   get(route('pages.course-details', $course))
-       ->assertNotFound();
+    get(route('pages.course-details', $course))
+        ->assertNotFound();
 });
 
 it('shows course details', function () {
@@ -19,7 +20,7 @@ it('shows course details', function () {
             $course->title,
             $course->description,
             $course->tagline,
-            ...$course->learnings
+            ...$course->learnings,
         ])
         ->assertSee(assert("images/$course->image_name"));
 });

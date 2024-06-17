@@ -4,6 +4,7 @@ use App\Models\Course;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+
 use function Pest\Laravel\get;
 
 it('cannot be accessed by a guest', function () {
@@ -40,7 +41,7 @@ it('does not list any other courses', function () {
         ->assertDontSeeText($course->title);
 });
 
-it ('shows latest purchased course first', function () {
+it('shows latest purchased course first', function () {
     $user = User::factory()->create();
     $firstPurchasedCourse = Course::factory()->create();
     $lastPurchasedCourse = Course::factory()->create();
@@ -53,11 +54,11 @@ it ('shows latest purchased course first', function () {
         ->assertOk()
         ->assertSeeTextInOrder([
             $lastPurchasedCourse->title,
-            $firstPurchasedCourse->title
+            $firstPurchasedCourse->title,
         ]);
 });
 
-it ('includes link to product videos', function () {
+it('includes link to product videos', function () {
     $user = User::factory()
         ->has(Course::factory())
         ->create();
@@ -89,5 +90,3 @@ it('includes logout', function () {
         ->assertSeeText('Log Out')
         ->assertSee(route('logout'));
 });
-
-

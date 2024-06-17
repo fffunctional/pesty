@@ -54,8 +54,6 @@ it('includes logout if logged in', function () {
 });
 
 it('does not find JetStream registration page', function () {
-   get('register')
-       ->assertNotFound();
+    get('register')
+        ->assertNotFound();
 });
-
-
